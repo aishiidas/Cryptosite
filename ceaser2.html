@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caesar's Cipher</title>
+    <link rel="stylesheet" href="ceaserstyle (1).css">
+</head>
+
+<body>
+    <div class="mainContainer">
+        <h1>DECRYPTION</h1>
+        <label for="original">Cipher Message</label>
+        <input id="original" type="text">
+        <h3>(Put the Encrypted Message here)</h3>
+
+        <label for="shift">KEY VALUE</label>
+        <input id="shift" type="number">
+        <h3>(Enter the same key in negative)</h3>
+
+        <hr>
+
+        <label for="encrypted">Decrypted Message</label>
+        <input type="text" id="encrypted" value="" readonly>
+    </div>
+    <script>
+        let originalInput = document.querySelector("#original");
+        let shiftInput = document.querySelector("#shift");
+        let encryptedInput = document.querySelector("#encrypted");
+
+        let originalMessage = originalInput.value;
+
+        originalInput.addEventListener("input", characterEntered, false);
+        shiftInput.addEventListener("input", numberEntered, false);
+
+        function characterEntered(e) {
+            originalMessage = e.target.value;
+            originalMessage = originalMessage.toLowerCase();
+            originalMessage = originalMessage.replace(/[^a-z]/, '');
+
+            e.target.value = originalMessage;
+
+          startEncryption();
+
+        }
+        function numberEntered(e) {
+            startEncryption();
+        }
+
+        function startEncryption() {
+            let encryptedMessage = "";
+            //let shift = 1;
+            let shift = shiftInput.value ? Number(shiftInput.value) :0;
+
+            for (letter of originalMessage) {
+                encryptedMessage += shiftLetter(letter, shift);
+            }
+            //console.log(encryptedMessage);
+            encryptedInput.value = encryptedMessage;
+        }
+        startEncryption();
+        function shiftLetter(letter, shift) {
+            let newLetter = "";
+
+            let letterCode = letter.charCodeAt(0);
+            let newLetterCode = letterCode + (shift % 26);
+
+            if (newLetterCode < 97) {
+                newLetterCode += 26;
+
+            } else if (newLetterCode > 122) {
+                newLetterCode -= 26;
+            }
+            newLetter = String.fromCharCode(newLetterCode);
+
+            return newLetter;
+
+        }
+    </script>
+    <!-- <div>
+        <p align="right">
+            <button class="btn btn-outline-warning" type="button" style="margin-right:5%">
+                
+                <a href="admin.php">MAIN MENU</a>
+            </button> -->
+            <!-- <input type="button" value="Click Me" /> -->
+        <!-- </p>
+    </div> -->
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <!-- <button class="btn btn-primary" type="button">MAIN PAGE</button> -->
+        <!-- <p align="right"> -->
+            <button class="btn btn-primary me-md-2 custom-btn" type="button" style="margin-left: 8%;">
+                <a class="custom-btn-a" href="ceaser.html">ENCRYPTION</a>
+            </button>
+            <!-- <input type="button" value="Click Me" /> -->
+        <!-- </p> -->
+        <!-- <p align="left"> -->
+            <button class="btn btn-primary me-md-2" type="button" style="margin-left: 68%;">
+                <a href="admin.php">EXIT</a>
+            </button>
+            <!-- <input type="button" value="Click Me" /> -->
+        <!-- </p> -->
+    </div>
+</body>
+
+</html>

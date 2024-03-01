@@ -1,0 +1,72 @@
+
+  *{
+    
+    --primary: #FF6666;
+    --font: 'Andale Mono', 'Menlo', 'Courier New', Courier, monospace;
+    --dark: #222;
+    --gray: #D8D8D8;
+    --white: #FFF;
+    --darkGray: #A2A2A2;
+  }
+
+  body {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #FFF 75%, #FFF8F8 100%);
+    font-family: var(--font);
+    background-image: url(https://www.kirupa.com/images/circles_bottom.svg);
+    background-repeat: no-repeat;
+    background-position: calc(100% + 150px) calc(100% + 50px);
+    background-size: 450px;
+    padding: 20px;
+  }
+
+  h1 {
+    color: var(--primary);
+    border-bottom: 5px solid var(--primary);
+    padding: 10px;
+    margin-top: -20px;
+    font-size: 3em;
+    font-weight: 100;
+  }
+
+  label {
+    margin: 20px;
+    color: var(--darkGray);
+  }
+
+  input {
+    display: block;
+    font-family: var(--font);
+    font-size: 2em;
+    padding: 9px;
+    font-weight: 100;
+    border: 3px solid var(--gray);
+    margin: 15px;
+    background-color: var(--white);
+    width: calc(100% - 65px);
+  }
+
+  #encrypted {
+    border-color: var(--dark);
+    background-color: var(--dark);
+    color: var(--white);
+  }
+
+  .mainContainer {
+    max-width: 1050px;
+    margin: 0 auto;
+  }
+
+  hr {
+    border: 1px solid var(--primary);
+    margin: 50px 0px;
+  }
+
+  .orange img {
+    width: 50px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+
+
